@@ -23,5 +23,6 @@ if (isWorker) {
   app.use(express.json());  // default to use JSON-encoded post data
 
   // Register the sync module to a URL
-  app.post("/sync", profoundjs.express("sync.js")); // This works because containing folder is in path
+  // This works because containing folder is in the pathlist defined in config.js
+  app.post("/sync", profoundjs.express("sync.js"));
 }
