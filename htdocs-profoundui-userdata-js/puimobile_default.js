@@ -159,6 +159,7 @@ pui.mobile = (function () {
   return {
     sync: sync,
     run: run,
-    checkout: checkout
+    isSyncNeeded: isSyncNeeded,
+    checkout: checkout,
   }
 })();

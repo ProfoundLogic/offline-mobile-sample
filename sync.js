@@ -15,6 +15,8 @@ function sync(req, res) {
             order.orid = orderId;
             pjs.query("INSERT INTO ORDDTL SET ? WITH NC", order);
         });
+
+        // Code would go here to process the orders and update the product quantity numbers
     }
 
     // Send back a current copy of the product file

@@ -1,6 +1,6 @@
 # Profound UI sample offline app
 
-Working sample code for an offline Profound UI mobile application and its corresponding Node.js web service. When installed, files that make up a simple shopping app will be downloaded from a server to the Profound UI mobile app and then executed in a disconnected,"offline" manner. Products can be purchased with no network connection between the mobile device and the back-end web service. Once a connection is re-established, the queued orders can be sent to the web service, where they will be written to tables on the IBM i.
+Working sample code for an offline Profound UI mobile application and its corresponding Node.js web service. When installed, files that make up a simple shopping app will be downloaded to the Profound UI mobile app from a server and then executed in a disconnected, "offline" manner. Products can be "purchased" with no network connection between the mobile device and the back-end web service. Once a connection is re-established, the queued orders can be sent to the web service, where they will be written to tables on the IBM i.
 
 ## Requirements
 
