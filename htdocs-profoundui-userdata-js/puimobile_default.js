@@ -23,6 +23,9 @@ pui.mobile = (function () {
       headers: { "Content-Type": "application/json" },
       url: connection.syncURL,
       method: "post",
+      onfail: function (ajaxRequest) {
+        callback(ajaxRequest.getStatusMessage());
+      },
       handler: syncHandler
     };
 
@@ -46,7 +49,7 @@ pui.mobile = (function () {
         storeObject("products", response.products);
         removeObject("orders");
       }
-      callback();
+      callback(null);
     }
   }
 
@@ -155,11 +158,20 @@ pui.mobile = (function () {
     }
   }
 
+  /**
+   * Determine if queued-up data exists that can be synced with the server.
+   */
+  function isSyncNeeded() {
+    var orders = getObject("orders");
+
+    return orders !== null;
+  }
+
   // Return public methods
   return {
     sync: sync,
     run: run,
     isSyncNeeded: isSyncNeeded,
-    checkout: checkout,
+    checkout: checkout
   }
 })();
