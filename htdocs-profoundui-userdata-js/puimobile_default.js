@@ -79,9 +79,15 @@ pui.mobile = (function () {
   /**
    * Run the offline app
    * @param {object} displayData JSON data that describes the offline app's display content.
+   * @param {object} connection Connection information for this offline app.
+   * @param {string} connection.name Descriptive name of the connection.
+   * @param {string} connection.host Hostname
+   * @param {string} connection.port Port
+   * @param {boolean} connection.ssl Use SSL?
+   * @param {string} connection.parm Parameter to pass to back end
    * @param {function} callback Callback function that must be called when the run process has completed.
    */
-  function run(displayData, callback) {
+  function run(displayData, connection, callback) {
     // Initialize data
     // Retrieve product data from local storage
     var products = getObject("products") || [];
