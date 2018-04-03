@@ -115,7 +115,8 @@ pui.mobile = (function () {
       meta: displayData,
       format: "Orders",
       data: { ProdGrid: products },
-      handler: displayHandler
+      handler: displayHandler,
+      transition: { animation: "slide-left", screen: "new" }
     }
 
     // Display screen and process user input
