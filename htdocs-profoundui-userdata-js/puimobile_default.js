@@ -1,5 +1,14 @@
 /*
  * Example of puimobile_default.js written in Revealing Module Pattern
+ *
+ * Caution: this example uses HTML localStorage for storing data on the device. This approach is generally reliable, but 
+ *   there are cases where data stored this way can be lost. For example, when the device's storage is low, to free space the
+ *   operating system may automatically clear data from localStorage.
+ *   Additionally, because all connections share the same instance of localStorage, care must be taken between offline
+ *   applications to use unique strings for storage keys. Otherwise, for example, if one connection writes to "orders", and
+ *   another connection reads from "orders", the second connection would be mixing up data from the first connection.
+ * To avoid data loss, the device's local filesystem storage should be used. Alternately, a database saved on the device 
+ *   could be used.
  */
 
 // Place all end-user code in `pui.mobile`
