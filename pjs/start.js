@@ -24,5 +24,6 @@ if (isWorker) {
 
   // Register the sync module to a URL
   // This works because containing folder is in the pathlist defined in config.js
-  app.post("/sync", profoundjs.express("sync.js"));
+  // Pass the additional authenticate boolean parameter true to use credentials. 
+  app.post("/sync", profoundjs.express("sync.js", true));
 }
