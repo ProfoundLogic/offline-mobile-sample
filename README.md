@@ -19,9 +19,9 @@ Working sample code for an offline Profound UI mobile application and its corres
 
 ## Requirements
 
-* The Profound UI mobile app installed from the iOS or Android app store
-* Node.js and Profound.js installed either on a PC or IBM i
-* An IBM i
+- The Profound UI mobile app installed from the iOS or Android app store
+- Node.js and Profound.js installed either on a PC or IBM i
+- An IBM i
 
 ## Installation
 
@@ -29,16 +29,16 @@ Follow these instructions to produce a working offline app.
 
 ### Profound.js
 
-* Install Node.js and Profound.js, which will provide the web service.  This can be done on either a PC or IBM i.
-* Clone this repository into a subfolder in the `modules` folder.
-* Copy the relevant `app.post("/sync"...)` line from the included `start.js` file to the actual one in the root Profound.js folder.
-* Adjust the `pathlist` property in `config.js` in the root Profound.js folder, using the included `config.js` as a guide. The pathlist should contain both the sample web service module as well as the sample data library that will be created on the IBM i (if they both have the same name, only one pathlist entry is needed).
-* Move `puimobile_default.js` and `puimobile_default.json` to the Profound UI "user data" JavaScript folder (`<profound_js>/htdocs/profoundui/userdata/js`).  These files comprise the actual offline app that will be downloaded to the mobile device and run.
+- Install Node.js and Profound.js, which will provide the web service.  This can be done on either a PC or IBM i.
+- Clone this repository into a subfolder in the `modules` folder.
+- Copy the relevant `app.post("/sync"...)` line from the included `start.js` file to the actual one in the root Profound.js folder.
+- Adjust the `pathlist` property in `config.js` in the root Profound.js folder, using the included `config.js` as a guide. The pathlist should contain both the sample web service module as well as the sample data library that will be created on the IBM i (if they both have the same name, only one pathlist entry is needed).
+- Move `puimobile_default.js` and `puimobile_default.json` to the Profound UI "user data" JavaScript folder (`<profound_js>/htdocs/profoundui/userdata/js`).  These files comprise the actual offline app that will be downloaded to the mobile device and run.
 
 ### IBM i
 
-* Create a library to contain your sample data, making sure that the library name is included in the `pathlist` property defined in the previous section.
-* Create the products, order header, and order detail files, by executing the included `ORDHDR.sql` and `ORDDTL.sql` scripts.  Be sure to edit the scripts to contain your own library name.  SQL scripts can be run either from IBM Access Client Solutions on your PC or by issuing a statement on the IBM i like
+- Create a library to contain your sample data, making sure that the library name is included in the `pathlist` property defined in the previous section.
+- Create the products, order header, and order detail files, by executing the included `ORDHDR.sql` and `ORDDTL.sql` scripts.  Be sure to edit the scripts to contain your own library name.  SQL scripts can be run either from IBM Access Client Solutions on your PC or by issuing a statement on the IBM i like
 
 ```
 > RUNSQLSTM SRCSTMF('QSQLSRC/ORDDTL.sql') COMMIT(*NONE) NAMING(*SQL)
@@ -70,14 +70,14 @@ The name of the mobile application files will vary depending on the connection's
 
 The offline mobile application can do anything you'd like, but it must provide three methods that will be called by the Profound UI mobile app. See the [sample code](htdocs-profoundui-userdata-js/) for a working implementation example.
 
-* `sync(connection, callback)` This method will be called when the connection's sync button is tapped on the connections screen, and should contain your code for sending to the server data that was collected since the previous sync. It contains two parameters.
-  * `connection` contains connection information for reaching the server, such as the server name, port, etc.
-  * `callback` is a Profound UI function that should be called once the sync has completed.
-* `run(displayData, connection, callback)` This method will be called when the connection is tapped on the connections screen, and contains the code for your actual offline app. It contains three parameters.
-  * `displayData` contains the Rich Display screen data for the offline application (the `puimobile_default.json` data), and should be sent along to `pui.show()` for rendering, via its `meta` property.
-  * `connection` contains connection information for reaching the server, in case your offline app wants to directly contact the server outside of the sync method.
-  * `callback` is a Profound UI function that should be called to exit your application and return to the connections screen.
-* `isSyncNeeded()` This method is used to tell the Profound UI mobile app if any offline data exists in your app that needs to be synced with the server. A value of `true` will color the sync button amber to indicate that a sync is needed, and `false` will color it green.
+- `sync(connection, callback)` This method will be called when the connection's sync button is tapped on the connections screen, and should contain your code for sending to the server data that was collected since the previous sync. It contains two parameters.
+  - `connection` contains connection information for reaching the server, such as the server name, port, etc.
+  - `callback` is a Profound UI function that should be called once the sync has completed.
+- `run(displayData, connection, callback)` This method will be called when the connection is tapped on the connections screen, and contains the code for your actual offline app. It contains three parameters.
+  - `displayData` contains the Rich Display screen data for the offline application (the `puimobile_default.json` data), and should be sent along to `pui.show()` for rendering, via its `meta` property.
+  - `connection` contains connection information for reaching the server, in case your offline app wants to directly contact the server outside of the sync method.
+  - `callback` is a Profound UI function that should be called to exit your application and return to the connections screen.
+- `isSyncNeeded()` This method is used to tell the Profound UI mobile app if any offline data exists in your app that needs to be synced with the server. A value of `true` will color the sync button amber to indicate that a sync is needed, and `false` will color it green.
 
 ## Sample code
 
