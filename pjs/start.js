@@ -23,7 +23,6 @@ if (isWorker) {
   app.use(express.json());  // default to use JSON-encoded post data
 
   // Register the sync module to a URL
-  // This works because containing folder is in the pathlist defined in config.js
-  // Pass the additional authenticate boolean parameter true to use credentials. 
+  // The `true` parameter tells Profound.js to connect to the IBM i
   app.post("/sync", profoundjs.express("sync.js", true));
 }
